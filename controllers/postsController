@@ -1,0 +1,49 @@
+const Message = require("../models/posts");
+const asyncHandler = require("express-async-handler");
+const { body, validationResult } = require("express-validator");
+
+// get all posts
+exports.all_posts_get = asyncHandler(async (req, res, next) => {
+    res.send('hello')
+/*
+  let allMessages = await Message.find().exec()
+
+  res.render('home', {
+    title: 'Message Board',
+    message: allMessages
+  });*/
+
+});
+
+// Get single post.
+exports.single_post_get = asyncHandler(async (req, res, next) => {
+
+ res.send('hello')
+
+  });
+
+
+
+// POST new message.
+exports.create_post = asyncHandler(async (req, res, next) => {
+
+    res.send('hello')
+   
+     });
+
+
+// DELETE message. 
+
+exports.delete_post = asyncHandler(async (req, res, next) => {
+
+    res.send('hello')
+   
+     });
+
+// PUT edit message
+
+exports.edit_post = asyncHandler(async (req, res, next) => {
+
+    res.send('hello')
+   
+     });
