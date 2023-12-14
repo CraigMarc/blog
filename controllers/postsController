@@ -2,19 +2,30 @@ const Posts = require("../models/posts");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 
-// get all posts
-exports.all_posts_get = asyncHandler(async (req, res, next) => {
+// get all published posts
+exports.all_published_posts_get = asyncHandler(async (req, res, next) => {
     
-  let allPosts = await Posts.find().exec()
+  let allPosts = await Posts.find({'published': true}).exec()
   console.log(allPosts)
   res.json(allPosts)
   
 });
 
+// get all posts
+
+exports.all_posts_get = asyncHandler(async (req, res, next) => {
+    
+  let allPosts = await Posts.find().exec()
+  return res.json(allPosts)
+  
+});
+
 // Get single post.
 exports.single_post_get = asyncHandler(async (req, res, next) => {
-
- res.send('hello1')
+  
+  let post = await Posts.findById(req.params.postId).exec()
+  
+ return res.json(post)
 
   });
 
@@ -34,7 +45,7 @@ exports.create_post = asyncHandler(async (req, res, next) => {
     });
 
     await post.save();
-   
+    return res.send(post);
      });
 
 
@@ -42,14 +53,29 @@ exports.create_post = asyncHandler(async (req, res, next) => {
 
 exports.delete_post = asyncHandler(async (req, res, next) => {
 
-    res.send('hellodelete')
-   
+  await Posts.findByIdAndDelete(req.params.postId);
+   return res.send('deleted')
      });
 
 // PUT edit message
 
 exports.edit_post = asyncHandler(async (req, res, next) => {
 
-    res.send('helloedit')
+  let currentDate = new Date();
+  console.log(req.body)
+  const post = new Posts({
+    title: req.body.title,
+    text: req.body.text,
+    timeStamp: currentDate,
+    published: req.body.published,
+    _id: req.params.postId
    
      });
+     console.log(req.params.postId)
+     await Posts.findByIdAndUpdate(req.params.postId, post, {});
+     
+    })
+
+    
+
+  
