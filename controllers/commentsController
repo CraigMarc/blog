@@ -1,0 +1,14 @@
+const Posts = require("../models/posts");
+const asyncHandler = require("express-async-handler");
+const { body, validationResult } = require("express-validator");
+/*
+Book.find({ author: req.params.id }, "title summary").exec(),
+
+// get all posts
+
+exports.all_comments_get = asyncHandler(async (req, res, next) => {
+    
+    let allPosts = await Posts.find().exec()
+    return res.json(allPosts)
+    
+  });*/

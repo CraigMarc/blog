@@ -6,7 +6,7 @@ const { body, validationResult } = require("express-validator");
 exports.all_published_posts_get = asyncHandler(async (req, res, next) => {
     
   let allPosts = await Posts.find({'published': true}).exec()
-  console.log(allPosts)
+  
   res.json(allPosts)
   
 });
@@ -35,7 +35,7 @@ exports.single_post_get = asyncHandler(async (req, res, next) => {
 exports.create_post = asyncHandler(async (req, res, next) => {
 
     let currentDate = new Date();
-    console.log(currentDate)
+   //**************** */ why isn't date working????????
     const post = new Posts({
       title: req.body.title,
       text: req.body.text,
@@ -62,7 +62,7 @@ exports.delete_post = asyncHandler(async (req, res, next) => {
 exports.edit_post = asyncHandler(async (req, res, next) => {
 
   let currentDate = new Date();
-  console.log(req.body)
+  
   const post = new Posts({
     title: req.body.title,
     text: req.body.text,
@@ -71,9 +71,9 @@ exports.edit_post = asyncHandler(async (req, res, next) => {
     _id: req.params.postId
    
      });
-     console.log(req.params.postId)
+    
      await Posts.findByIdAndUpdate(req.params.postId, post, {});
-     
+     return res.send(post);
     })
 
     
