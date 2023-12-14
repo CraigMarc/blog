@@ -3,11 +3,24 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+const dotenv = require('dotenv');
+dotenv.config();
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", false);
+
 var app = express();
+
+//database connection
+// env variable may need quotes
+const mongoDB = process.env.MONGODB_URI
+
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB);
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
