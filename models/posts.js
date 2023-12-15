@@ -10,17 +10,6 @@ const PostsSchema = new Schema({
   
 });
 
-// Virtual for item URL
-PostsSchema.virtual("url").get(function () {
-  // We don't use an arrow function as we'll need the this object
-  return `/api/posts/${this._id}`;
-});
-
-// Virtual for Date
-PostsSchema.virtual("formattedDate").get(function () {
-    // We don't use an arrow function as we'll need the this object
-    return this.timeStamp.toLocaleString();
-  });
 
 // Export model
 module.exports = mongoose.model("Posts", PostsSchema);
