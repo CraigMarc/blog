@@ -5,6 +5,16 @@ const { body, validationResult } = require("express-validator");
 Book.find({ author: req.params.id }, "title summary").exec(),
 */
 
+// get all comments
+
+exports.all_comments_get = asyncHandler(async (req, res, next) => {
+    
+  let allComments = await Comments.find().exec()
+  
+   return res.json(allComments)
+   
+ });
+
 //create new comment
   exports.comments_create = asyncHandler(async (req, res, next) => {
     

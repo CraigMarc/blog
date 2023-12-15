@@ -8,7 +8,7 @@ const posts_controller = require("../controllers/postsController");
 
 /// Catagory ROUTES ///
 
-// GET all messages.
+// GET all posts.
 router.get("/posts/", posts_controller.all_posts_get);
 
 // Get all published posts
@@ -30,6 +30,10 @@ router.delete("/posts/:postId", posts_controller.delete_post);
 
 router.put("/posts/:postId", posts_controller.edit_post);
 
+// GET all comments.
+router.get("/comments/", comments_controller.all_comments_get);
+
+// Get all published posts
 
 //add commment to post
 
