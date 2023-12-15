@@ -1,17 +1,12 @@
 const Comments = require("../models/comments");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
-/*
-Book.find({ author: req.params.id }, "title summary").exec(),
-*/
+
 
 // get all comments
 
 exports.all_comments_get = asyncHandler(async (req, res, next) => {
 
-  //let allComments = await Comments.find().exec()
-
-  //return res.json(allComments)
   try {
     let allComments = await Comments.find().exec()
     res.status(200).json(allComments)
@@ -32,8 +27,6 @@ exports.comments_create = asyncHandler(async (req, res, next) => {
 
   });
 
-  //await comment.save();
-  //return res.send(comment);
   try {
     await comment.save()
     res.status(200).json(comment)
@@ -49,8 +42,6 @@ exports.comments_create = asyncHandler(async (req, res, next) => {
 
 exports.comments_delete = asyncHandler(async (req, res, next) => {
   
-  //await Comments.findByIdAndDelete(req.params.commentId);
-  //return res.send('deleted')
   try {
     await Comments.findByIdAndDelete(req.params.commentId);
     res.status(200).json({deleted: req.params.commentId})

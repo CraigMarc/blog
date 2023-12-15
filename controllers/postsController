@@ -7,32 +7,52 @@ mongoose.set("strictQuery", false)
 // get all published posts
 exports.all_published_posts_get = asyncHandler(async (req, res, next) => {
     
-  let allPosts = await Posts.find({'published': true}).exec()
+  //let allPosts = await Posts.find({'published': true}).exec()
   
-  res.json(allPosts)
-  
+  //res.json(allPosts)
+  try {
+    let allPosts = await Posts.find({'published': true}).exec()
+    res.status(200).json(allPosts)
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+
 });
+
+
+
+
+
 
 // get all posts
 
 exports.all_posts_get = asyncHandler(async (req, res, next) => {
     
- let allPosts = await Posts.find().exec()
- 
-  return res.json(allPosts)
+
+  try {
+    let allPosts = await Posts.find().exec()
+    res.status(200).json(allPosts)
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
   
 });
+
+
 
 // Get single post.
 exports.single_post_get = asyncHandler(async (req, res, next) => {
   
-  let post = await Posts.findById(req.params.commentId).exec()
-  
- return res.json(post)
+ 
+ try {
+  let post = await Posts.findById(req.params.postId).exec()
+  res.status(200).json(post)
+} catch (error) {
+  res.status(500).json({ message: error });
+}
 
   });
-
-
+  
 
 // POST new message.
 exports.create_post = asyncHandler(async (req, res, next) => {
@@ -45,18 +65,31 @@ exports.create_post = asyncHandler(async (req, res, next) => {
 
     });
 
-    await post.save();
-    return res.send(post);
+    try {
+      await post.save()
+      res.status(200).json(post)
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+
      });
+
 
 
 // DELETE message. 
 
 exports.delete_post = asyncHandler(async (req, res, next) => {
 
-  await Posts.findByIdAndDelete(req.params.postId);
-   return res.send('deleted')
+  try {
+    await Posts.findByIdAndDelete(req.params.postId);
+    res.status(200).json({deleted: req.params.postId})
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+
      });
+
+     
 
 // PUT edit message
 
@@ -73,12 +106,13 @@ exports.edit_post = asyncHandler(async (req, res, next) => {
    
      });
     
-     
-     await Posts.findByIdAndUpdate(req.params.postId, post, {});
-     
-    
-     
-     return res.send(post);
+     try {
+      await Posts.findByIdAndUpdate(req.params.postId, post, {});
+      res.status(200).json({updated: req.params.postId})
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+
     })
 
     
