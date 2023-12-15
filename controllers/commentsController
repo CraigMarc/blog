@@ -1,14 +1,31 @@
-const Posts = require("../models/posts");
+const Comments = require("../models/comments");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 /*
 Book.find({ author: req.params.id }, "title summary").exec(),
+*/
 
-// get all posts
+//create new comment
+  exports.comments_create = asyncHandler(async (req, res, next) => {
+    
+    let currentDate = new Date();
+   //**************** */ why isn't date working????????
+   
+    const comment = new Comments({
+      text: req.body.text,
+      timeStamp: currentDate,
+      posts_id: req.body.posts_id
 
-exports.all_comments_get = asyncHandler(async (req, res, next) => {
-    
-    let allPosts = await Posts.find().exec()
-    return res.json(allPosts)
-    
-  });*/
+    });
+
+    await comment.save();
+    return res.send(comment);
+     });
+
+  //delete post
+
+  exports.comments_delete = asyncHandler(async (req, res, next) => {
+
+    await Comments.findByIdAndDelete(req.params.postId);
+     return res.send('deleted')
+       });

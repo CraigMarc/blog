@@ -30,16 +30,13 @@ router.delete("/posts/:postId", posts_controller.delete_post);
 
 router.put("/posts/:postId", posts_controller.edit_post);
 
-//get comments for post
-
-//router.get("/", comments_controller.all_comments_get);
 
 //add commment to post
 
-//router.get("/", comments_controller.all_comments_get);
+router.post("/comments/", comments_controller.comments_create);
 
 //delete comment
 
-
+router.delete("/comment/:commentId", comments_controller.comments_delete);
 
 module.exports = router;

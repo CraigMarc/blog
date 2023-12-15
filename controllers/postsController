@@ -1,6 +1,8 @@
 const Posts = require("../models/posts");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", false)
 
 // get all published posts
 exports.all_published_posts_get = asyncHandler(async (req, res, next) => {
@@ -16,7 +18,9 @@ exports.all_published_posts_get = asyncHandler(async (req, res, next) => {
 exports.all_posts_get = asyncHandler(async (req, res, next) => {
     
   let allPosts = await Posts.find().exec()
-  return res.json(allPosts)
+  
+
+  return res.json({posts:allPosts})
   
 });
 
@@ -72,10 +76,14 @@ exports.edit_post = asyncHandler(async (req, res, next) => {
    
      });
     
+     
      await Posts.findByIdAndUpdate(req.params.postId, post, {});
+     
+    
+     
      return res.send(post);
     })
 
     
 
-  
+    
