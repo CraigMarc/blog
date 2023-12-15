@@ -15,6 +15,8 @@ mongoose.set("strictQuery", false);
 
 const app = express();
 
+
+
 //database connection
 // env variable may need quotes
 const mongoDB = process.env.MONGODB_URI

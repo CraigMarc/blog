@@ -4,7 +4,7 @@ const router = express.Router();
 // Require controller modules.
 const comments_controller = require("../controllers/commentsController");
 const posts_controller = require("../controllers/postsController");
-
+const auth_controller = require("../controllers/authController");
 
 /// Catagory ROUTES ///
 
@@ -44,3 +44,7 @@ router.post("/comments/", comments_controller.comments_create);
 router.delete("/comments/:commentId", comments_controller.comments_delete);
 
 module.exports = router;
+
+// login 
+
+router.post("/login/", auth_controller.log_in);
