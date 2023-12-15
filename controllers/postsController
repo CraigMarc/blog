@@ -28,7 +28,7 @@ exports.all_posts_get = asyncHandler(async (req, res, next) => {
 // Get single post.
 exports.single_post_get = asyncHandler(async (req, res, next) => {
   
-  let post = await Posts.findById(req.params.postId).exec()
+  let post = await Posts.findById(req.params.commentId).exec()
   
  return res.json(post)
 

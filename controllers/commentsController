@@ -32,10 +32,10 @@ exports.all_comments_get = asyncHandler(async (req, res, next) => {
     return res.send(comment);
      });
 
-  //delete post
+  //delete comment
 
   exports.comments_delete = asyncHandler(async (req, res, next) => {
-
-    await Comments.findByIdAndDelete(req.params.postId);
+    console.log(req.params)
+    await Comments.findByIdAndDelete(req.params.commentId);
      return res.send('deleted')
        });

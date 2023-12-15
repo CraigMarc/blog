@@ -41,6 +41,6 @@ router.post("/comments/", comments_controller.comments_create);
 
 //delete comment
 
-router.delete("/comment/:commentId", comments_controller.comments_delete);
+router.delete("/comments/:commentId", comments_controller.comments_delete);
 
 module.exports = router;
