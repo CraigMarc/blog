@@ -23,7 +23,6 @@ exports.all_comments_get = asyncHandler(async (req, res, next) => {
    
     const comment = new Comments({
       text: req.body.text,
-      timeStamp: currentDate,
       posts_id: req.body.posts_id
 
     });

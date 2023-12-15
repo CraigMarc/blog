@@ -39,12 +39,10 @@ exports.single_post_get = asyncHandler(async (req, res, next) => {
 // POST new message.
 exports.create_post = asyncHandler(async (req, res, next) => {
 
-    let currentDate = new Date();
-   //**************** */ why isn't date working????????
+    
     const post = new Posts({
       title: req.body.title,
       text: req.body.text,
-      timeStamp: currentDate,
       published: false,
 
     });
