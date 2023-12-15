@@ -8,33 +8,55 @@ Book.find({ author: req.params.id }, "title summary").exec(),
 // get all comments
 
 exports.all_comments_get = asyncHandler(async (req, res, next) => {
-    
-  let allComments = await Comments.find().exec()
+
+  //let allComments = await Comments.find().exec()
+
+  //return res.json(allComments)
+  try {
+    let allComments = await Comments.find().exec()
+    res.status(200).json(allComments)
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
   
-   return res.json(allComments)
-   
- });
+});
+
 
 //create new comment
-  exports.comments_create = asyncHandler(async (req, res, next) => {
-    
-    let currentDate = new Date();
-   //**************** */ why isn't date working????????
-   
-    const comment = new Comments({
-      text: req.body.text,
-      posts_id: req.body.posts_id
+exports.comments_create = asyncHandler(async (req, res, next) => {
 
-    });
 
-    await comment.save();
-    return res.send(comment);
-     });
+  const comment = new Comments({
+    text: req.body.text,
+    posts_id: req.body.posts_id
 
-  //delete comment
+  });
 
-  exports.comments_delete = asyncHandler(async (req, res, next) => {
-    console.log(req.params)
+  //await comment.save();
+  //return res.send(comment);
+  try {
+    await comment.save()
+    res.status(200).json(comment)
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+
+});
+
+
+
+//delete comment
+
+exports.comments_delete = asyncHandler(async (req, res, next) => {
+  
+  //await Comments.findByIdAndDelete(req.params.commentId);
+  //return res.send('deleted')
+  try {
     await Comments.findByIdAndDelete(req.params.commentId);
-     return res.send('deleted')
-       });
+    res.status(200).json({deleted: req.params.commentId})
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+
+});
+
