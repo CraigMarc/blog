@@ -43,8 +43,14 @@ router.post("/comments/", comments_controller.comments_create);
 
 router.delete("/comments/:commentId", comments_controller.comments_delete);
 
-module.exports = router;
+
 
 // login 
 
 router.post("/login/", auth_controller.log_in);
+
+// check protected route
+
+router.get("/protected/", auth_controller.protected);
+
+module.exports = router;

@@ -8,6 +8,11 @@ dotenv.config();
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const apiRouter = require('./routes/api')
+const passport = require("passport");
+const JwtStrategy = require("passport-jwt").Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+//passport.use(JwtStrategy);
+
 
 
 const mongoose = require("mongoose");
@@ -15,6 +20,20 @@ mongoose.set("strictQuery", false);
 
 const app = express();
 
+
+
+const opts = {}
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.secretOrKey = process.env.SECRET_KEY; //normally store this in process.env.secret
+//opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('JWT')
+
+passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
+  console.log(jwt_payload.email)
+  if (jwt_payload.email === "c@yahoo.com") {
+      return done(null, true)
+  }
+  return done(null, false)
+}) )
 
 
 //database connection

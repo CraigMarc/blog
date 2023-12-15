@@ -3,44 +3,32 @@ const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
-//const jwtStrategry  = require("./strategies/jwt")
-
 const JwtStrategy = require("passport-jwt").Strategy;
-passport.use(JwtStrategy);
-// get all comments
-/*
-exports.log_in = asyncHandler(async (req, res, next) => {
+const ExtractJwt = require('passport-jwt').ExtractJwt;
 
- res.send('not done')
-  
-});*/
 /*
-exports.log_in = (req, res) => {
-    let { email, password } = req.body;
-    console.log(email)
-    console.log(password)
-    //This lookup would normally be done using a database
-    if (email === "c@yahoo.com") {
-        if (password === "pass") { //the password compare would normally be done using bcrypt.
-            opts.expiresIn = 120;  //token expires in 2min
-            const secret = "SECRET_KEY" //normally stored in process.env.secret
-            const token = jwt.sign({ email }, secret, opts);
-            return res.status(200).json({
-                message: "Auth Passed",
-                token
-            })
-        }
+passport.use(JwtStrategy);
+const opts = {}
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.secretOrKey = process.env.SECRET_KEY; //normally store this in process.env.secret
+
+new JwtStrategy(opts, (jwt_payload, done) => {
+    if (jwt_payload.email === "c@yahoo.com") {
+        return done(null, true)
     }
-    return res.status(401).json({ message: "Auth Failed" })
-};*/
+    return done(null, false)
+}) */
+
+
+
 exports.log_in = (req, res) => {
     let { email, password } = req.body;
     //This lookup would normally be done using a database
     if (email === "c@yahoo.com") {
         if (password === "pass") { //the password compare would normally be done using bcrypt.
             const opts = {}
-            opts.expiresIn = 120;  //token expires in 2min
-            const secret = "SECRET_KEY" //normally stored in process.env.secret
+            opts.expiresIn = 1200;  //token expires in 2min
+            const secret = process.env.SECRET_KEY //normally stored in process.env.secret
             const token = jwt.sign({ email }, secret, opts);
             return res.status(200).json({
                 message: "Auth Passed",
@@ -50,3 +38,8 @@ exports.log_in = (req, res) => {
     }
     return res.status(401).json({ message: "Auth Failed" })
 }
+
+exports.protected = passport.authenticate('jwt', { session: false }), (req, res) => {
+    return res.status(200).send("YAY! this is a protected Route")
+}
+
