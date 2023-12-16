@@ -1,4 +1,4 @@
-GET http://localhost:3000/api
+GET http://localhost:3000/api/posts
 
 ###
 
@@ -15,4 +15,4 @@ curl -X POST -H "Content-Type:application/json" http://localhost:3000/api/login 
 ###
 
 get http://localhost:3000/api/protected
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNjczNDU4LCJleHAiOjE3MDI2NzQ2NTh9.ySJ6XSJbAQgAqESwTsbppx0vDr8A1ceVN60AJFKeCFM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNjg5OTA2LCJleHAiOjE3MDI2OTExMDZ9.s96nH8egrtvXyqdlJjEnpmL4OppzVo_1oHzGCn1BXwo

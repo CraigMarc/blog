@@ -19,7 +19,7 @@ const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
 const app = express();
-
+//added auth route
 
 
 const opts = {}
@@ -73,6 +73,8 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+
+  
 });
 
 module.exports = app;
