@@ -1,26 +1,48 @@
-GET http://localhost:3000/api/posts
-
+GET http://localhost:3000/users/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNzYxNzc2LCJleHAiOjE3MDI3NjI5NzZ9.sF7tHPUD6QQsscUb9I-PrHzEkgo9OOXXAsi8rhCfmm8
 ###
 
-POST http://localhost:3000/api/messages
+POST http://localhost:3000/users/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNzYyNDUzLCJleHAiOjE3MDI3NjM2NTN9.lrqd4vTQH_mK0zUZNoUnOj8Xkxnn0BDENo2V1LjKLh8
 Content-Type: application/json
+
 {"title":"title",
 "text":"First Post"
 }
 
-###
+###new token
 
 curl -X POST -H "Content-Type:application/json" http://localhost:3000/api/login -d '{"email":"c@yahoo.com", "password":"pass"}'
 
+###delete post
+
+Delete http://localhost:3000/users/posts/657bb9e942363c0092ed838f
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNzYxNzc2LCJleHAiOjE3MDI3NjI5NzZ9.sF7tHPUD6QQsscUb9I-PrHzEkgo9OOXXAsi8rhCfmm8
 ###
 
-get http://localhost:3000/api/protected
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNjg5OTA2LCJleHAiOjE3MDI2OTExMDZ9.s96nH8egrtvXyqdlJjEnpmL4OppzVo_1oHzGCn1BXwo
+PUT http://localhost:3000/users/posts/657bb9f142363c0092ed8391
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNzYyNDUzLCJleHAiOjE3MDI3NjM2NTN9.lrqd4vTQH_mK0zUZNoUnOj8Xkxnn0BDENo2V1LjKLh8
+Content-Type: application/json
+
+{"title":"title",
+"text":"First Post",
+"published":true
+}
+###delete comment
+Delete http://localhost:3000/users/comments/657bba4342363c0092ed8399
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNzYzNTMzLCJleHAiOjE3MDI3NjQ3MzN9.eSHnVuzuGp90HXnCeUtgWUeWGHCCjQSkG3Md9A2DMNo
+###get single post
+GET http://localhost:3000/users/posts/657bb9f142363c0092ed8391
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNzYzMTM2LCJleHAiOjE3MDI3NjQzMzZ9.GjoNAMqDqDrWRXydd1hFAMkdVul6iuYFP7YvkzKhdB8
+###get published posts
+GET http://localhost:3000/api/published
 
 ###
-get http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNjkxMTA1LCJleHAiOjE3MDI2OTIzMDV9._905JfWm9W6V0olM6BQhC-xymb6w-uwgH8sCe2lVR9k
+GET http://localhost:3000/api/comments
 
 ###
-get http://localhost:3000/users/protected
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNjkxMTgzLCJleHAiOjE3MDI2OTIzODN9.HgszQP8T50IH0oDI8p7-QJbgyeqhV5QDKgIbpz2pydc
+Post http://localhost:3000/api/comments
+Content-Type: application/json
+
+{"text":"commenttest", 
+"posts_id":"657bb9e942363c0092ed838f"}

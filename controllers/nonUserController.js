@@ -1,6 +1,20 @@
 const Comments = require("../models/comments");
+const Posts = require("../models/posts");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
+
+
+   // get all published posts
+exports.all_published_posts_get = asyncHandler(async (req, res, next) => {
+    
+  try {
+    let allPosts = await Posts.find({'published': true}).exec()
+    res.status(200).json(allPosts)
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+
+});
 
 
 // get all comments
@@ -38,16 +52,7 @@ exports.comments_create = asyncHandler(async (req, res, next) => {
 
 
 
-//delete comment
 
-exports.comments_delete = asyncHandler(async (req, res, next) => {
-  
-  try {
-    await Comments.findByIdAndDelete(req.params.commentId);
-    res.status(200).json({deleted: req.params.commentId})
-  } catch (error) {
-    res.status(500).json({ message: error });
-  }
 
-});
+
 

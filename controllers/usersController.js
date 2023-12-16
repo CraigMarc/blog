@@ -1,26 +1,9 @@
 const Posts = require("../models/posts");
+const Comments = require("../models/comments");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false)
-
-// get all published posts
-exports.all_published_posts_get = asyncHandler(async (req, res, next) => {
-    
-  //let allPosts = await Posts.find({'published': true}).exec()
-  
-  //res.json(allPosts)
-  try {
-    let allPosts = await Posts.find({'published': true}).exec()
-    res.status(200).json(allPosts)
-  } catch (error) {
-    res.status(500).json({ message: error });
-  }
-
-});
-
-
-
 
 
 
@@ -38,21 +21,18 @@ exports.all_posts_get = asyncHandler(async (req, res, next) => {
   
 });
 
-
-
 // Get single post.
 exports.single_post_get = asyncHandler(async (req, res, next) => {
   
  
- try {
-  let post = await Posts.findById(req.params.postId).exec()
-  res.status(200).json(post)
-} catch (error) {
-  res.status(500).json({ message: error });
-}
-
-  });
-  
+  try {
+   let post = await Posts.findById(req.params.postId).exec()
+   res.status(200).json(post)
+ } catch (error) {
+   res.status(500).json({ message: error });
+ }
+ 
+   });
 
 // POST new message.
 exports.create_post = asyncHandler(async (req, res, next) => {
@@ -115,6 +95,19 @@ exports.edit_post = asyncHandler(async (req, res, next) => {
 
     })
 
-    
+//delete comment
+
+exports.comments_delete = asyncHandler(async (req, res, next) => {
+  
+  try {
+    await Comments.findByIdAndDelete(req.params.commentId);
+    res.status(200).json({deleted: req.params.commentId})
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+
+});
+
+
 
     
