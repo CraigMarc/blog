@@ -16,3 +16,11 @@ curl -X POST -H "Content-Type:application/json" http://localhost:3000/api/login 
 
 get http://localhost:3000/api/protected
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNjg5OTA2LCJleHAiOjE3MDI2OTExMDZ9.s96nH8egrtvXyqdlJjEnpmL4OppzVo_1oHzGCn1BXwo
+
+###
+get http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNjkxMTA1LCJleHAiOjE3MDI2OTIzMDV9._905JfWm9W6V0olM6BQhC-xymb6w-uwgH8sCe2lVR9k
+
+###
+get http://localhost:3000/users/protected
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNjkxMTgzLCJleHAiOjE3MDI2OTIzODN9.HgszQP8T50IH0oDI8p7-QJbgyeqhV5QDKgIbpz2pydc
