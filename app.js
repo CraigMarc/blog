@@ -12,7 +12,7 @@ const passport = require("passport");
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 //passport.use(JwtStrategy);
-
+const User = require("./models/user");
 
 
 const mongoose = require("mongoose");
@@ -28,12 +28,21 @@ opts.secretOrKey = process.env.SECRET_KEY; //normally store this in process.env.
 //opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('JWT')
 
 passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
-  console.log(jwt_payload.email)
-  if (jwt_payload.email === "c@yahoo.com") {
-      return done(null, true)
+  
+  try {
+  let userDb = User.findOne({userNmae: jwt_payload.email})
+    
+    if (userDb) {
+        return done(null, true);
+    } else {
+        return done(null, false);
+        
+    }
   }
-  return done(null, false)
-}) )
+  catch (error) {
+    console.log(error)
+  }
+}))
 
 
 //database connection

@@ -6,7 +6,7 @@ const passport = require("passport");
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const User = require("../models/user");
-
+const bcrypt = require('bcryptjs')
 /*
 passport.use(JwtStrategy);
 const opts = {}
@@ -55,8 +55,11 @@ exports.log_in = asyncHandler(async (req, res, next) => {
     try {
         let userDb = await User.find({ 'userName': email }).exec()
         
+        const match = await bcrypt.compare(password, userDb[0].password);
+        console.log(match)
         if (userDb[0].userName === email) {
-            if (userDb[0].password === password) { //the password compare would normally be done using bcrypt.
+            if (match == true) {
+            //if (userDb[0].password === password) { //the password compare would normally be done using bcrypt.
                 const opts = {}
                 opts.expiresIn = 1200;  //token expires in 2min
                 const secret = process.env.SECRET_KEY

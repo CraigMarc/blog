@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require('dotenv');
 dotenv.config();
 mongoose.set("strictQuery", false)
+const bcrypt = require('bcryptjs')
 
 //database connection
 // env variable may need quotes
@@ -14,6 +15,23 @@ async function main() {
 }
 
 async function userCreate(userName, password) {
+
+  bcrypt.hash(password, 10, async (err, hashedPassword) => {
+    // if err, do something
+    if (err) {
+      return console.log('Cannot encrypt');
+    }
+    // otherwise, store hashedPassword in DB
+    const userDetail = new User({
+      
+      userName: userName,
+      password: hashedPassword
+    })
+    const user = new User(userDetail);
+    await user.save()
+  });
+
+  /*
     const userDetail = {
       userName: "c@yahoo.com",
       password: "123456",
@@ -23,8 +41,10 @@ async function userCreate(userName, password) {
   
     const user = new User(userDetail);
     await user.save();
+
+    */
     
     console.log('added user');
   }
 
-  userCreate('c@yahoo.com', '123456')
+  userCreate('craig', '123456')
