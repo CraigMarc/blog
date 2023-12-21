@@ -54,11 +54,9 @@ exports.log_in = asyncHandler(async (req, res, next) => {
     let { email, password } = req.body;
     try {
         let userDb = await User.find({ 'userName': email }).exec()
-        //res.status(200).json(userDb)
-        console.log(userDb)
-
-        if (userDb[0].userName === "c@yahoo.com") {
-            if (userDb[0].password === "123456") { //the password compare would normally be done using bcrypt.
+        
+        if (userDb[0].userName === email) {
+            if (userDb[0].password === password) { //the password compare would normally be done using bcrypt.
                 const opts = {}
                 opts.expiresIn = 1200;  //token expires in 2min
                 const secret = process.env.SECRET_KEY
@@ -73,20 +71,7 @@ exports.log_in = asyncHandler(async (req, res, next) => {
     } catch (error) {
         res.status(500).json({ message: error });
     }
-/*
-    //This lookup would normally be done using a database
-    if (email === "c@yahoo.com") {
-        if (password === "pass") { //the password compare would normally be done using bcrypt.
-            const opts = {}
-            opts.expiresIn = 1200;  //token expires in 2min
-            const secret = process.env.SECRET_KEY
-            const token = jwt.sign({ email }, secret, opts);
-            return res.status(200).json({
-                message: "Auth Passed",
-                token
-            })
-        }
-    }*/
+
     return res.status(401).json({ message: "Auth Failed" })
 })
 
