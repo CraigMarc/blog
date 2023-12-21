@@ -1,10 +1,9 @@
 GET http://localhost:3000/users/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzMTg1NDE4LCJleHAiOjE3MDMxODY2MTh9.8vfzDibFYgXwsQxTw9GwLM-i7sEDQMvElaHMObvZu68
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzMjAwMTc0LCJleHAiOjE3MDMyMDEzNzR9.dqF3gi8ILI0uE7szOFCzu8xtgutUanYlmL824GsPJrc
 ###
 
 POST http://localhost:3000/users/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNzYyNDUzLCJleHAiOjE3MDI3NjM2NTN9.lrqd4vTQH_mK0zUZNoUnOj8Xkxnn0BDENo2V1LjKLh8
-Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzMTk1ODIwLCJleHAiOjE3MDMxOTcwMjB9.aNW4_Axaw-RYFCkMvXabwX5KmvdZNNoM2cAalnCgp3M
 
 {"title":"title",
 "text":"First Post"
@@ -46,3 +45,7 @@ Content-Type: application/json
 
 {"text":"commenttestnew", 
 "posts_id":"657bb9e942363c0092ed838f"}
+
+###
+
+Post http://localhost:3000/api/logout

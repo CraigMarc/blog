@@ -23,5 +23,8 @@ router.post("/comments/", nonUser_controller.comments_create);
 
 router.post("/login/", auth_controller.log_in);
 
+// logout
+
+router.post("/logout/", auth_controller.log_out);
 
 module.exports = router;

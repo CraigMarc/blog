@@ -13,12 +13,35 @@ const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 //passport.use(JwtStrategy);
 const User = require("./models/user");
-
+const compression = require("compression");
+const helmet = require("helmet");
 
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
 const app = express();
+
+const RateLimit = require("express-rate-limit");
+const limiter = RateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 20,
+});
+// Apply rate limiter to all requests
+app.use(limiter);
+
+app.use(compression()); // Compress all routes
+
+// Add helmet to the middleware chain.
+// Set CSP headers to allow our Bootstrap and Jquery to be served
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      "script-src": ["'self'", "code.jquery.com", "cdn.jsdelivr.net"],
+    },
+  }),
+);
+
+
 //added auth route
 
 
