@@ -1,5 +1,5 @@
 GET http://localhost:3000/users/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNzYxNzc2LCJleHAiOjE3MDI3NjI5NzZ9.sF7tHPUD6QQsscUb9I-PrHzEkgo9OOXXAsi8rhCfmm8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAzMTgyNDUyLCJleHAiOjE3MDMxODM2NTJ9.wYNEOnhQPddTdCDqnzf0qvvv9u9uoTaeyKaw6XDvuo
 ###
 
 POST http://localhost:3000/users/posts
@@ -44,5 +44,5 @@ GET http://localhost:3000/api/comments
 Post http://localhost:3000/api/comments
 Content-Type: application/json
 
-{"text":"commenttest", 
+{"text":"commenttestnew", 
 "posts_id":"657bb9e942363c0092ed838f"}

@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const passport = require("passport");
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
+const User = require("../models/user");
 
 /*
 passport.use(JwtStrategy);
@@ -19,16 +20,24 @@ new JwtStrategy(opts, (jwt_payload, done) => {
     return done(null, false)
 }) */
 
-
-
-exports.log_in = (req, res) => {
+/*
+exports.log_in = asyncHandler(async (req, res, next) => {
+//exports.log_in = (req, res) => {
     let { email, password } = req.body;
+    try {
+        let userDb = await User.find({'userName': email}).exec()
+        //res.status(200).json(userDb)
+        console.log(userDb)
+      } catch (error) {
+        res.status(500).json({ message: error });
+      }
+      
     //This lookup would normally be done using a database
     if (email === "c@yahoo.com") {
         if (password === "pass") { //the password compare would normally be done using bcrypt.
             const opts = {}
             opts.expiresIn = 1200;  //token expires in 2min
-            const secret = process.env.SECRET_KEY //normally stored in process.env.secret
+            const secret = process.env.SECRET_KEY 
             const token = jwt.sign({ email }, secret, opts);
             return res.status(200).json({
                 message: "Auth Passed",
@@ -37,10 +46,49 @@ exports.log_in = (req, res) => {
         }
     }
     return res.status(401).json({ message: "Auth Failed" })
-}
+})
+*/
 
-exports.protected = passport.authenticate('jwt', { session: false }), (req, res) => {
-    return res.status(200).send("YAY! this is a protected Route")
-}
+exports.log_in = asyncHandler(async (req, res, next) => {
+    //exports.log_in = (req, res) => {
+    let { email, password } = req.body;
+    try {
+        let userDb = await User.find({ 'userName': email }).exec()
+        //res.status(200).json(userDb)
+        console.log(userDb)
 
-//exports.protected = (req, res) => { res.send('route working')}
+        if (userDb[0].userName === "c@yahoo.com") {
+            if (userDb[0].password === "123456") { //the password compare would normally be done using bcrypt.
+                const opts = {}
+                opts.expiresIn = 1200;  //token expires in 2min
+                const secret = process.env.SECRET_KEY
+                const token = jwt.sign({ email }, secret, opts);
+                return res.status(200).json({
+                    message: "Auth Passed",
+                    token
+                })
+            }
+        }
+
+    } catch (error) {
+        res.status(500).json({ message: error });
+    }
+/*
+    //This lookup would normally be done using a database
+    if (email === "c@yahoo.com") {
+        if (password === "pass") { //the password compare would normally be done using bcrypt.
+            const opts = {}
+            opts.expiresIn = 1200;  //token expires in 2min
+            const secret = process.env.SECRET_KEY
+            const token = jwt.sign({ email }, secret, opts);
+            return res.status(200).json({
+                message: "Auth Passed",
+                token
+            })
+        }
+    }*/
+    return res.status(401).json({ message: "Auth Failed" })
+})
+
+
+
