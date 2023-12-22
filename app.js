@@ -15,11 +15,19 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 const User = require("./models/user");
 const compression = require("compression");
 const helmet = require("helmet");
+const cors = require('cors');
 
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
 const app = express();
+
+let corsOptions = {
+  origin: ['http://localhost:3000', 'localhost:5173'],
+  optionsSuccessStatus: 200
+}
+
+app.options('*', cors(corsOptions));
 
 const RateLimit = require("express-rate-limit");
 const limiter = RateLimit({
