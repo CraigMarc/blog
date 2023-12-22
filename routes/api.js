@@ -15,6 +15,10 @@ router.get("/published", nonUser_controller.all_published_posts_get);
 // GET all comments.
 router.get("/comments/", nonUser_controller.all_comments_get);
 
+// get comments for specific post
+
+router.get("/comments/:postId", nonUser_controller.post_comments_get);
+
 //add commment to post
 
 router.post("/comments/", nonUser_controller.comments_create);

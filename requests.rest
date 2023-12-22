@@ -44,8 +44,12 @@ Post http://localhost:3000/api/comments
 Content-Type: application/json
 
 {"text":"commenttestnew", 
-"posts_id":"657bb9e942363c0092ed838f"}
+"posts_id":"657bb9f342363c0092ed8393"}
 
 ###
 
 Post http://localhost:3000/api/logout
+
+### get comments for posts
+
+GET http://localhost:3000/api/comments/657bb9f342363c0092ed8393

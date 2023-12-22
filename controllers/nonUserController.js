@@ -30,6 +30,25 @@ exports.all_comments_get = asyncHandler(async (req, res, next) => {
   
 });
 
+// get comment for specific post
+
+exports.post_comments_get = asyncHandler(async (req, res, next) => {
+
+
+  try {
+    let postComments = await Comments.find({posts_id: req.params.postId})
+    .populate("posts_id")
+    .exec()
+    res.status(200).json(postComments)
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+  
+});
+
+
+
+
 
 //create new comment
 exports.comments_create = asyncHandler(async (req, res, next) => {

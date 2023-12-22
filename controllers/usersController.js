@@ -79,7 +79,6 @@ exports.edit_post = asyncHandler(async (req, res, next) => {
     let postData = await Posts.findById({_id: req.params.postId});
     
   
-  console.log(postData.published)
 
   if (postData.published == true) {
 
