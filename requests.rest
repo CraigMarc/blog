@@ -1,5 +1,5 @@
 GET http://localhost:3000/users/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzMjAwMTc0LCJleHAiOjE3MDMyMDEzNzR9.dqF3gi8ILI0uE7szOFCzu8xtgutUanYlmL824GsPJrc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzMjgxMTE1LCJleHAiOjE3MDMyODIzMTV9.gEVD0hHoPxhBYP-mRk3VcfheogWKvphxyiSCGx4gLtk
 ###
 
 POST http://localhost:3000/users/posts
@@ -20,7 +20,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob
 ###
 
 PUT http://localhost:3000/users/posts/657bb9f142363c0092ed8391
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNzYyNDUzLCJleHAiOjE3MDI3NjM2NTN9.lrqd4vTQH_mK0zUZNoUnOj8Xkxnn0BDENo2V1LjKLh8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzMjgxMTE1LCJleHAiOjE3MDMyODIzMTV9.gEVD0hHoPxhBYP-mRk3VcfheogWKvphxyiSCGx4gLtk
 Content-Type: application/json
 
 {"title":"title",

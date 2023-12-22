@@ -75,23 +75,48 @@ exports.delete_post = asyncHandler(async (req, res, next) => {
 
 exports.edit_post = asyncHandler(async (req, res, next) => {
 
-  let currentDate = new Date();
   
+    let postData = await Posts.findById({_id: req.params.postId});
+    
+  
+  console.log(postData.published)
+
+  if (postData.published == true) {
+
   const post = new Posts({
     title: req.body.title,
     text: req.body.text,
-    timeStamp: currentDate,
-    published: req.body.published,
+    published: false,
     _id: req.params.postId
    
      });
-    
+
      try {
       await Posts.findByIdAndUpdate(req.params.postId, post, {});
       res.status(200).json({updated: req.params.postId})
     } catch (error) {
       res.status(500).json({ message: error });
     }
+  }
+
+  if (postData.published == false) {
+
+    const post = new Posts({
+      title: req.body.title,
+      text: req.body.text,
+      published: true,
+      _id: req.params.postId
+     
+       });
+  
+       try {
+        await Posts.findByIdAndUpdate(req.params.postId, post, {});
+        res.status(200).json({updated: req.params.postId})
+      } catch (error) {
+        res.status(500).json({ message: error });
+      }
+    }
+     
 
     })
 
