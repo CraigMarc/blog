@@ -83,8 +83,8 @@ exports.edit_post = asyncHandler(async (req, res, next) => {
   if (postData.published == true) {
 
   const post = new Posts({
-    title: req.body.title,
-    text: req.body.text,
+    title: postData.title,
+    text: postData.text,
     published: false,
     _id: req.params.postId
    
@@ -101,8 +101,8 @@ exports.edit_post = asyncHandler(async (req, res, next) => {
   if (postData.published == false) {
 
     const post = new Posts({
-      title: req.body.title,
-      text: req.body.text,
+      title: postData.title,
+      text: postData.text,
       published: true,
       _id: req.params.postId
      
