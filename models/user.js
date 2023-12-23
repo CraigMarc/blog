@@ -9,11 +9,7 @@ const UserSchema = new Schema({
   
 });
 
-// Virtual for item URL
-UserSchema.virtual("url").get(function () {
-  // We don't use an arrow function as we'll need the this object
-  return `/api/user/${this._id}`;
-});
+
 
 // Export model
 module.exports = mongoose.model("User", UserSchema);
