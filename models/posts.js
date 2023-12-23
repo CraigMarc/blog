@@ -13,7 +13,7 @@ const PostsSchema = new Schema({
 // Virtual for Date
 PostsSchema.virtual("formattedDate").get(function () {
   // We don't use an arrow function as we'll need the this object
-  return this.timeStamp.toLocaleString();
+  return this.timestamp.toLocaleString();
 });
 
 

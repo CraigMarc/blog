@@ -55,6 +55,7 @@ exports.comments_create = asyncHandler(async (req, res, next) => {
 
 
   const comment = new Comments({
+    name: req.body.name,
     text: req.body.text,
     posts_id: req.body.posts_id
 

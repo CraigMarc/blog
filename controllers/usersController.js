@@ -36,7 +36,7 @@ exports.single_post_get = asyncHandler(async (req, res, next) => {
 
 // POST new message.
 exports.create_post = asyncHandler(async (req, res, next) => {
-
+  
     
     const post = new Posts({
       title: req.body.title,
