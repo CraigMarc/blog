@@ -63,7 +63,8 @@ exports.comments_create = asyncHandler(async (req, res, next) => {
 
   try {
     await comment.save()
-    res.status(200).json(comment)
+    let allComments = await Comments.find().exec()
+    res.status(200).json(allComments)
   } catch (error) {
     res.status(500).json({ message: error });
   }
