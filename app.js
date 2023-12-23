@@ -21,13 +21,21 @@ const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
 const app = express();
-
+/*
 let corsOptions = {
   origin: ['http://localhost:3000', 'http://localhost:5173'],
   optionsSuccessStatus: 200
 }
 
 app.options('*', cors(corsOptions));
+*/
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 
 const RateLimit = require("express-rate-limit");
 const limiter = RateLimit({
