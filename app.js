@@ -23,7 +23,7 @@ mongoose.set("strictQuery", false);
 const app = express();
 
 let corsOptions = {
-  origin: ['http://localhost:3000', 'localhost:5173'],
+  origin: ['http://localhost:3000', 'http://localhost:5173'],
   optionsSuccessStatus: 200
 }
 
