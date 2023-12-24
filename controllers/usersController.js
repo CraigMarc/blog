@@ -35,7 +35,20 @@ exports.single_post_get = asyncHandler(async (req, res, next) => {
    });
 
 // POST new message.
-exports.create_post = asyncHandler(async (req, res, next) => {
+exports.create_post = [
+
+  body("title").trim().escape(),
+  body("text").trim().escape(),
+
+  async function (req, res, next) {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.json({
+        data: req.body,
+        errors: errors.array(),
+      });
+      return;
+    }
   
     
     const post = new Posts({
@@ -52,8 +65,8 @@ exports.create_post = asyncHandler(async (req, res, next) => {
       res.status(500).json({ message: error });
     }
 
-     });
-
+     }
+]
 
 
 // DELETE message. 

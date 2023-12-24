@@ -51,7 +51,20 @@ exports.post_comments_get = asyncHandler(async (req, res, next) => {
 
 
 //create new comment
-exports.comments_create = asyncHandler(async (req, res, next) => {
+exports.comments_create =  [
+
+  body("text").trim().escape(),
+  body("user").trim().escape(),
+
+  async function (req, res, next) {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.json({
+        data: req.body,
+        errors: errors.array(),
+      });
+      return;
+    }
 
 
   const comment = new Comments({
@@ -68,8 +81,9 @@ exports.comments_create = asyncHandler(async (req, res, next) => {
   } catch (error) {
     res.status(500).json({ message: error });
   }
+  }
+]
 
-});
 
 
 

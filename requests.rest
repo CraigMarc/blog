@@ -1,12 +1,12 @@
 GET http://localhost:3000/users/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzMzAzODEzLCJleHAiOjE3MDMzMDUwMTN9.5QHy6PpxRYP2_u9BjRi_XMjT_x8FCYdxA8c4w3bkyPg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzNDQ3NDgxLCJleHAiOjE3MDM0NDg2ODF9.uItZgiFqJYOX-zwLlEBYsvTynBsnnvWNat6Msc6toTw
 ###
 
 POST http://localhost:3000/users/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzMzAzNjY1LCJleHAiOjE3MDMzMDQ4NjV9.OqRhUKa9xrhy_mIPxAU9eDCho1qzcaCudam7A09zqRg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzNDQ3NDM2LCJleHAiOjE3MDM0NDg2MzZ9.qYq8aucWE_yyRrbkK2xh6D_ev-FFjAzPZYiPaF1iPTw
 Content-Type: application/json
 
-{"title":"title23",
+{"title":"title3",
 "text":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates natus voluptatibus reprehenderit ipsa commodi illo officia veniam velit. Voluptatibus maiores earum quaerat. Facilis, corporis placeat excepturi eaque repudiandae aliquam. Enim animi et expedita autem dolore quibusdam mollitia dignissimos consequuntur quasi aperiam, quis vel at iste ullam vero voluptas ut sunt blanditiis laborum velit nesciunt sapiente vitae. Dolor aperiam ducimus, fugit ipsam, molestias, provident cumque tenetur tempore atque ab nostrum commodi non labore velit odit facere quidem voluptatum. Vero, deserunt. Dolore explicabo ipsum neque earum assumenda labore commodi? Vero atque veritatis vitae temporibus, repellendus quam molestiae, rem qui sequi fuga maxime?"
 }
 
@@ -41,7 +41,7 @@ GET http://localhost:3000/api/comments
 Post http://localhost:3000/api/comments
 Content-Type: application/json
 
-{"name": "jacktest",
+{"name": "sanit",
 "text":"commenstnew", 
 "posts_id":"65865a5aceedb9a64e830cff"}
 
