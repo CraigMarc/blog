@@ -1,5 +1,5 @@
 GET http://localhost:3000/users/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzNDQ3NDgxLCJleHAiOjE3MDM0NDg2ODF9.uItZgiFqJYOX-zwLlEBYsvTynBsnnvWNat6Msc6toTw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzNDQ4MDUzLCJleHAiOjE3MDM0NDkyNTN9.oqvQKo0_fXlM120cZB74B-HXNuGLvLw4xcqp3dKOUsA
 ###
 
 POST http://localhost:3000/users/posts
@@ -16,12 +16,12 @@ curl -X POST -H "Content-Type:application/json" http://localhost:3000/api/login 
 
 ###delete post
 
-Delete http://localhost:3000/users/posts/657bb9e942363c0092ed838f
+Delete http://localhost:3000/users/posts/65888babdb94b3dbbbee673f
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNzYxNzc2LCJleHAiOjE3MDI3NjI5NzZ9.sF7tHPUD6QQsscUb9I-PrHzEkgo9OOXXAsi8rhCfmm8
 ###
 
-PUT http://localhost:3000/users/posts/65865a56ceedb9a64e830cfd
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzMzAzODEzLCJleHAiOjE3MDMzMDUwMTN9.5QHy6PpxRYP2_u9BjRi_XMjT_x8FCYdxA8c4w3bkyPg
+PUT http://localhost:3000/users/posts/65888babdb94b3dbbbee673f
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzNDQ4MDUzLCJleHAiOjE3MDM0NDkyNTN9.oqvQKo0_fXlM120cZB74B-HXNuGLvLw4xcqp3dKOUsA
 Content-Type: application/json
 
 
