@@ -23,6 +23,10 @@ router.delete("/posts/:postId", user_controller.delete_post);
 
 router.put("/publish/:postId", user_controller.publish_post);
 
+// Put edit post
+
+router.put("/edit/:postId", user_controller.edit_post);
+
 //delete comment
 
 router.delete("/comments/:commentId", user_controller.comments_delete);

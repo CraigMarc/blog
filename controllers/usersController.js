@@ -76,7 +76,7 @@ exports.delete_post = asyncHandler(async (req, res, next) => {
 
   try {
     await Posts.findByIdAndDelete(req.params.postId);
-    await Comments.deleteMany({posts_id: req.params.postId})
+    await Comments.deleteMany({ posts_id: req.params.postId })
     let allPosts = await Posts.find().exec()
     res.status(200).json(allPosts)
   } catch (error) {
@@ -92,50 +92,81 @@ exports.delete_post = asyncHandler(async (req, res, next) => {
 exports.publish_post = asyncHandler(async (req, res, next) => {
 
 
-    let postData = await Posts.findById({ _id: req.params.postId });
+  let postData = await Posts.findById({ _id: req.params.postId });
 
 
 
-    if (postData.published == true) {
+  if (postData.published == true) {
 
-      const post = new Posts({
-        title: postData.title,
-        text: postData.text,
-        published: false,
-        _id: req.params.postId
+    const post = new Posts({
+      title: postData.title,
+      text: postData.text,
+      published: false,
+      _id: req.params.postId
 
-      });
+    });
 
-      try {
-        await Posts.findByIdAndUpdate(req.params.postId, post, {});
-        let allPosts = await Posts.find().exec()
-        res.status(200).json(allPosts)
-      } catch (error) {
-        res.status(500).json({ message: error });
-      }
+    try {
+      await Posts.findByIdAndUpdate(req.params.postId, post, {});
+      let allPosts = await Posts.find().exec()
+      res.status(200).json(allPosts)
+    } catch (error) {
+      res.status(500).json({ message: error });
     }
+  }
 
-    if (postData.published == false) {
+  if (postData.published == false) {
 
-      const post = new Posts({
-        title: postData.title,
-        text: postData.text,
-        published: true,
-        _id: req.params.postId
+    const post = new Posts({
+      title: postData.title,
+      text: postData.text,
+      published: true,
+      _id: req.params.postId
 
-      });
+    });
 
-      try {
-        await Posts.findByIdAndUpdate(req.params.postId, post, {});
-        let allPosts = await Posts.find().exec()
-        res.status(200).json(allPosts)
-      } catch (error) {
-        res.status(500).json({ message: error });
-      }
+    try {
+      await Posts.findByIdAndUpdate(req.params.postId, post, {});
+      let allPosts = await Posts.find().exec()
+      res.status(200).json(allPosts)
+    } catch (error) {
+      res.status(500).json({ message: error });
     }
+  }
 
 
-  })
+})
+
+// PUT edit post
+
+exports.edit_post = asyncHandler(async (req, res, next) => {
+
+
+ // let postData = await Posts.findById({ _id: req.params.postId });
+
+
+  const post = new Posts({
+    title: req.body.title,
+    text: req.body.text,
+    published: req.body.published,
+    _id: req.params.postId
+
+  });
+
+  try {
+    await Posts.findByIdAndUpdate(req.params.postId, post, {});
+    let allPosts = await Posts.find().exec()
+    res.status(200).json(allPosts)
+  } catch (error) {
+    res.status(500).json({ message: error });
+  }
+
+
+
+
+
+})
+
 
 
 //delete comment
