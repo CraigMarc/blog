@@ -19,9 +19,9 @@ router.post("/posts/", user_controller.create_post);
 // DELETE message. 
 router.delete("/posts/:postId", user_controller.delete_post);
 
-// PUT edit message
+// PUT publish post
 
-router.put("/posts/:postId", user_controller.edit_post);
+router.put("/publish/:postId", user_controller.publish_post);
 
 //delete comment
 

@@ -60,7 +60,8 @@ exports.create_post = [
 
     try {
       await post.save()
-      res.status(200).json(post)
+      let allPosts = await Posts.find().exec()
+      res.status(200).json(allPosts)
     } catch (error) {
       res.status(500).json({ message: error });
     }
@@ -75,7 +76,9 @@ exports.delete_post = asyncHandler(async (req, res, next) => {
 
   try {
     await Posts.findByIdAndDelete(req.params.postId);
-    res.status(200).json({ deleted: req.params.postId })
+    await Comments.deleteMany({posts_id: req.params.postId})
+    let allPosts = await Posts.find().exec()
+    res.status(200).json(allPosts)
   } catch (error) {
     res.status(500).json({ message: error });
   }
@@ -86,7 +89,7 @@ exports.delete_post = asyncHandler(async (req, res, next) => {
 
 // PUT publish unpublish
 
-exports.edit_post = asyncHandler(async (req, res, next) => {
+exports.publish_post = asyncHandler(async (req, res, next) => {
 
 
     let postData = await Posts.findById({ _id: req.params.postId });
@@ -105,7 +108,8 @@ exports.edit_post = asyncHandler(async (req, res, next) => {
 
       try {
         await Posts.findByIdAndUpdate(req.params.postId, post, {});
-        res.status(200).json({ updated: req.params.postId })
+        let allPosts = await Posts.find().exec()
+        res.status(200).json(allPosts)
       } catch (error) {
         res.status(500).json({ message: error });
       }
@@ -123,7 +127,8 @@ exports.edit_post = asyncHandler(async (req, res, next) => {
 
       try {
         await Posts.findByIdAndUpdate(req.params.postId, post, {});
-        res.status(200).json({ updated: req.params.postId })
+        let allPosts = await Posts.find().exec()
+        res.status(200).json(allPosts)
       } catch (error) {
         res.status(500).json({ message: error });
       }
