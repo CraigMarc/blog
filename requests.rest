@@ -1,19 +1,19 @@
 GET http://localhost:3000/users/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzNTM2NDY4LCJleHAiOjE3MDM1Mzc2Njh9.KuQPlsAT6D5_LeZ2wPrFBv6N1eEoNglyFmyCVEqAPWU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzNjM0NDc3LCJleHAiOjE3MDM2MzU2Nzd9.soqovfnJk6tRFHN-IwYTHD_t1hZA4u1s1njAXnnEP1k
 ###new post
 
 POST http://localhost:3000/users/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzNTM1NTM5LCJleHAiOjE3MDM1MzY3Mzl9.f5fsIoqh5NI5cUuenL4W3siibhd0zzxH1ZSDr8Jorw0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzNTUwNDUxLCJleHAiOjE3MDM1NTE2NTF9.2Qy3mVfCFUqW_G2Ic8p927g3KnAKjAg8HEz8eHO1Sjw
 Content-Type: application/json
 
-{"title":"deletetest",
+{"title":"post1234567",
 "text":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates natus voluptatibus reprehenderit ipsa commodi illo officia veniam velit. Voluptatibus maiores earum quaerat. Facilis, corporis placeat excepturi eaque repudiandae aliquam. Enim animi et expedita autem dolore quibusdam mollitia dignissimos consequuntur quasi aperiam, quis vel at iste ullam vero voluptas ut sunt blanditiis laborum velit nesciunt sapiente vitae. Dolor aperiam ducimus, fugit ipsam, molestias, provident cumque tenetur tempore atque ab nostrum commodi non labore velit odit facere quidem voluptatum. Vero, deserunt. Dolore explicabo ipsum neque earum assumenda labore commodi? Vero atque veritatis vitae temporibus, repellendus quam molestiae, rem qui sequi fuga maxime?"
 }
 
 ### edit post
 
 PUT http://localhost:3000/users/edit/65865a1cceedb9a64e830cf8
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzNTM2NDY4LCJleHAiOjE3MDM1Mzc2Njh9.KuQPlsAT6D5_LeZ2wPrFBv6N1eEoNglyFmyCVEqAPWU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzNjI5MTA3LCJleHAiOjE3MDM2MzAzMDd9.2c9jXHWD5vznYTkslkpejkhHOqcw_BFoyLyEhiWwts4
 Content-Type: application/json
 
 {"title":"edit test",
@@ -26,8 +26,8 @@ curl -X POST -H "Content-Type:application/json" http://localhost:3000/api/login 
 
 ###delete post
 
-Delete http://localhost:3000/users/posts/6589e3d576540955e6cba8f6
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzNTM1NjYwLCJleHAiOjE3MDM1MzY4NjB9.uKHiPLQPhsgm96yNF_0lOfvaGvEKOEda0k5J2wh1ukU
+Delete http://localhost:3000/users/posts/658a13cb6ef3fd5717446a25
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzNTQ4NDM3LCJleHAiOjE3MDM1NDk2Mzd9.SCj4gXFqHY6IdaZBdKIQIxErMRKuorLcRqpLESfHTYg
 
 ### publish post
 
@@ -37,8 +37,8 @@ Content-Type: application/json
 
 
 ###delete comment
-Delete http://localhost:3000/users/comments/657bba4342363c0092ed8399
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNzYzNTMzLCJleHAiOjE3MDI3NjQ3MzN9.eSHnVuzuGp90HXnCeUtgWUeWGHCCjQSkG3Md9A2DMNo
+Delete http://localhost:3000/users/comments/658b7317bddb37ad34acbafa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzNjM3NzI2LCJleHAiOjE3MDM2Mzg5MjZ9.l4E18_rxHt6nuT6otvGwwNkclA9vqoW-9gbIHYAwqKQ
 ###get single post
 GET http://localhost:3000/users/posts/657bb9f142363c0092ed8391
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNAeWFob28uY29tIiwiaWF0IjoxNzAyNzYzMTM2LCJleHAiOjE3MDI3NjQzMzZ9.GjoNAMqDqDrWRXydd1hFAMkdVul6iuYFP7YvkzKhdB8
@@ -54,7 +54,7 @@ Content-Type: application/json
 
 {"name": "sanit",
 "text":"dlete", 
-"posts_id":"6589e3d576540955e6cba8f6"}
+"posts_id":"658a1e1b4dc6d4b32fbe340d"}
 
 ###
 
@@ -62,4 +62,4 @@ Post http://localhost:3000/api/logout
 
 ### get comments for posts
 
-GET http://localhost:3000/api/comments/657bb9f342363c0092ed8393
+GET http://localhost:3000/api/comments/658a1e1b4dc6d4b32fbe340d

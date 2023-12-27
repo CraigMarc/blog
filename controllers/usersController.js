@@ -175,7 +175,8 @@ exports.comments_delete = asyncHandler(async (req, res, next) => {
 
   try {
     await Comments.findByIdAndDelete(req.params.commentId);
-    res.status(200).json({ deleted: req.params.commentId })
+    let allComments = await Comments.find().exec()
+    res.status(200).json(allComments)
   } catch (error) {
     res.status(500).json({ message: error });
   }
