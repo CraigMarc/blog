@@ -33,7 +33,7 @@ exports.log_in = asyncHandler(async (req, res, next) => {
         }
 
     } catch (error) {
-        res.status(500).json({ message: error });
+        res.status(500).json({ message: "wrong username or password" });
     }
 
     return res.status(401).json({ message: "Auth Failed" })
