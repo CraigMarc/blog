@@ -5,7 +5,7 @@ const { body, validationResult } = require("express-validator");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false)
 const multer = require("multer"); // For uploading images
-
+const fs = require('fs');
 
 //const upload = multer({ dest: './uploads/' })
 
@@ -112,7 +112,20 @@ if (req.file) {
 exports.delete_post = asyncHandler(async (req, res, next) => {
 
   try {
+    //find pic file
+    let picPost = await Posts.findById(req.params.postId);
+    console.log(picPost.image)
+    //delete pic file
+    fs.unlink("./uploads/" + picPost.image, (err) => {
+      if (err) {
+          throw err;
+      }
+  
+      console.log("Delete File successful.");
+  });
+    //delete post
     await Posts.findByIdAndDelete(req.params.postId);
+    //delete comments
     await Comments.deleteMany({ posts_id: req.params.postId })
     let allPosts = await Posts.find().exec()
     res.status(200).json(allPosts)
