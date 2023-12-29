@@ -59,6 +59,8 @@ exports.create_post = [
   body("text").trim().escape(),
 
   async function (req, res, next) {
+    console.log(req.file)
+    console.log(req.file.filename)
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.json({
@@ -73,7 +75,7 @@ exports.create_post = [
       title: req.body.title,
       text: req.body.text,
       published: false,
-      image: req.file ? req.file.filename : null,
+      image: req.file.filename
     });
 
     try {
