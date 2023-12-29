@@ -84,16 +84,7 @@ main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongoDB);
 }
-/*
-//pic database connection ******** get rid of
-const mongoDBpic = process.env.MONGODBPIC_URI
 
-const conn = mongoose.createConnection(mongoDBpic)
-
-conn.once('open', () => {
-  console.log('Connection Successful')
-})
-*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

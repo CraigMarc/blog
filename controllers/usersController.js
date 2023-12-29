@@ -7,7 +7,21 @@ mongoose.set("strictQuery", false)
 const multer = require("multer"); // For uploading images
 
 
-const upload = multer({ dest: './uploads/' })
+//const upload = multer({ dest: './uploads/' })
+
+let storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads')
+  },
+  filename: function (req, file, cb) {
+    let extArray = file.mimetype.split("/");
+    let extension = extArray[extArray.length - 1];
+    cb(null, file.fieldname + '-' + Date.now()+ '.' +extension)
+  }
+})
+const upload = multer({ storage: storage })
+
+
 
 // get all posts
 
