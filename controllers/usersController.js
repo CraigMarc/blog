@@ -201,8 +201,8 @@ exports.edit_post = asyncHandler(async (req, res, next) => {
     title: req.body.title,
     text: req.body.text,
     published: req.body.published,
-    _id: req.params.postId
-
+    _id: req.params.postId,
+    image: req.params.image
   });
 
   try {
