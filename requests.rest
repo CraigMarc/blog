@@ -13,7 +13,7 @@ Content-type: multipart/form-data
 
 ### multipart form request with webkit
 POST http://localhost:3000/users/posts HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODI1NDY0LCJleHAiOjE3MDM4MjY2NjR9.oq32Ssp34xAuAjllLqX-yGnc38WLQ7VMKnZzMrYqlYM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODI4MDE2LCJleHAiOjE3MDM4MjkyMTZ9.ObC-SgB6jRlcz5Uz1xJgdJYXDLLQ5Ojyexn4lbMvaDg
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -29,6 +29,22 @@ Content-Disposition: form-data; name="image"; filename="./pizza.jpeg"
 Content-Type: image/jpeg
 
 < ./pizza.jpeg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### multipart reuqest without pic
+
+POST http://localhost:3000/users/posts HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODI4MDE2LCJleHAiOjE3MDM4MjkyMTZ9.ObC-SgB6jRlcz5Uz1xJgdJYXDLLQ5Ojyexn4lbMvaDg
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="title"
+
+title
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="text"
+
+text
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
 

@@ -5,20 +5,7 @@ const { body, validationResult } = require("express-validator");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false)
 const multer = require("multer"); // For uploading images
-/*
-// Set up multer storage and file name
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "../uploads/");
-    
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  },
-});*/
 
-// Create multer upload instance
-//const upload = multer({ storage: storage });
 
 const upload = multer({ dest: './uploads/' })
 
@@ -59,8 +46,7 @@ exports.create_post = [
   body("text").trim().escape(),
 
   async function (req, res, next) {
-    console.log(req.file)
-    console.log(req.file.filename)
+    
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.json({
@@ -70,23 +56,40 @@ exports.create_post = [
       return;
     }
 
-
+if (req.file) {
     const post = new Posts({
       title: req.body.title,
       text: req.body.text,
       published: false,
       image: req.file.filename
     });
-
-    try {
-      await post.save()
-      let allPosts = await Posts.find().exec()
-      res.status(200).json(allPosts)
-    } catch (error) {
-      res.status(500).json({ message: error });
+      try {
+        await post.save()
+        let allPosts = await Posts.find().exec()
+        res.status(200).json(allPosts)
+      } catch (error) {
+        res.status(500).json({ message: error });
+      }
     }
+   else {
+    const post = new Posts({
+      title: req.body.title,
+      text: req.body.text,
+      published: false,
+      
+    });
+      try {
+        await post.save()
+        let allPosts = await Posts.find().exec()
+        res.status(200).json(allPosts)
+      } catch (error) {
+        res.status(500).json({ message: error });
+      }
+   }
+    
 
   }
+   
 ]
 
 
