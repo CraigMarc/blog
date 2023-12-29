@@ -5,7 +5,7 @@ const { body, validationResult } = require("express-validator");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false)
 const multer = require("multer"); // For uploading images
-
+/*
 // Set up multer storage and file name
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -15,11 +15,12 @@ const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     cb(null, file.originalname);
   },
-});
+});*/
 
 // Create multer upload instance
-const upload = multer({ storage: storage });
+//const upload = multer({ storage: storage });
 
+const upload = multer({ dest: './uploads/' })
 
 // get all posts
 

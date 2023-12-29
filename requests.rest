@@ -3,8 +3,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnI
 ###new post
 
 POST http://localhost:3000/users/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODA2OTIxLCJleHAiOjE3MDM4MDgxMjF9.CWjg0td1wVCfkGW53Ns9eK6Zr2nq0labHgXp0luNEt4
-enctype: multipart/form-data
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODIxMTI3LCJleHAiOjE3MDM4MjIzMjd9.IxDhPRsLX6hTYgUBTNUCt3S4XSFbRJKVW-Y50DIxZT4
+Content-type: multipart/form-data
 
 {"title":"post1234567",
 "text":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates natus voluptatibus reprehenderit ipsa commodi illo officia veniam velit. Voluptatibus maiores earum quaerat. Facilis, corporis placeat excepturi eaque repudiandae aliquam. Enim animi et expedita autem dolore quibusdam mollitia dignissimos consequuntur quasi aperiam, quis vel at iste ullam vero voluptas ut sunt blanditiis laborum velit nesciunt sapiente vitae. Dolor aperiam ducimus, fugit ipsam, molestias, provident cumque tenetur tempore atque ab nostrum commodi non labore velit odit facere quidem voluptatum. Vero, deserunt. Dolore explicabo ipsum neque earum assumenda labore commodi? Vero atque veritatis vitae temporibus, repellendus quam molestiae, rem qui sequi fuga maxime?",
@@ -13,7 +13,7 @@ enctype: multipart/form-data
 
 ### multipart form request with webkit
 POST http://localhost:3000/users/posts HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODE5OTc4LCJleHAiOjE3MDM4MjExNzh9.a5kfmP7vKribuT4ItfOA-KV1c6NXZ_rxa12NjxvSZHw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODI0NjY1LCJleHAiOjE3MDM4MjU4NjV9.nfwO2t1DS0V_1xzgQix3wpxk_faXSmKoLjwl1kaMlGY
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -25,16 +25,12 @@ Content-Disposition: form-data; name="text"
 
 text here
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="image"; filename="pizza.jpg"
+Content-Disposition: form-data; name="image"; filename="./pizza.jpeg"
 Content-Type: image/jpeg
 
-< /pizza.jpg
+< ./pizza.jpeg
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
-
-
-### multipart curl request
-curl -X POST -H Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODA4MzE0LCJleHAiOjE3MDM4MDk1MTR9.nYAkEdLDRev66MuFLtsnhOIKNhO-9k5rSEH9-nkgo8o http://localhost:3000/users/posts -H "Content-Type:multipart/form-data" http://localhost:3000/users/posts -F title=title -F text=text -F image=@piz.jpeg pizza4.jpeg
 
 
 ### edit post
