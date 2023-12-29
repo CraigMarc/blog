@@ -31,4 +31,14 @@ router.put("/edit/:postId", user_controller.edit_post);
 
 router.delete("/comments/:commentId", user_controller.comments_delete);
 
+//add image file
+/*
+router.post("/image/", user_controller.image_post);
+*/
+
+
 module.exports = router;
+
+
+
+

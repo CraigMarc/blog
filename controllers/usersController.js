@@ -4,7 +4,21 @@ const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false)
+const multer = require("multer"); // For uploading images
 
+// Set up multer storage and file name
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "../uploads/");
+    
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
+
+// Create multer upload instance
+const upload = multer({ storage: storage });
 
 
 // get all posts
@@ -37,6 +51,9 @@ exports.single_post_get = asyncHandler(async (req, res, next) => {
 // POST new message.
 exports.create_post = [
 
+  // Handle single file upload with field name "image"
+  upload.single("image"),
+
   body("title").trim().escape(),
   body("text").trim().escape(),
 
@@ -55,7 +72,7 @@ exports.create_post = [
       title: req.body.title,
       text: req.body.text,
       published: false,
-
+      image: req.file ? req.file.filename : null,
     });
 
     try {
@@ -183,5 +200,10 @@ exports.comments_delete = asyncHandler(async (req, res, next) => {
 
 });
 
+/*
+// add image post
+
+exports.image_post = upload.single("img"), (req, res, err) => { if (err) throw err; res.status(201).send(); }
+*/
 
 

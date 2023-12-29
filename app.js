@@ -11,24 +11,16 @@ const apiRouter = require('./routes/api')
 const passport = require("passport");
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
-//passport.use(JwtStrategy);
 const User = require("./models/user");
 const compression = require("compression");
 const helmet = require("helmet");
 const cors = require('cors');
 
+
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
 const app = express();
-/*
-let corsOptions = {
-  origin: ['http://localhost:3000', 'http://localhost:5173'],
-  optionsSuccessStatus: 200
-}
-
-app.options('*', cors(corsOptions));
-*/
 
 app.use(
   cors({
@@ -92,6 +84,16 @@ main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongoDB);
 }
+/*
+//pic database connection ******** get rid of
+const mongoDBpic = process.env.MONGODBPIC_URI
+
+const conn = mongoose.createConnection(mongoDBpic)
+
+conn.once('open', () => {
+  console.log('Connection Successful')
+})
+*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -101,8 +103,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname)));
 app.use('/', indexRouter);
 //app.use('/users', usersRouter);
 app.use('/api', apiRouter)

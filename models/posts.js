@@ -7,7 +7,7 @@ const PostsSchema = new Schema({
   text: { type: String, required: true, minLength: 1 },
   timestamp: { type: Date, default: new Date() },
   published: { type: Boolean },
-  
+  image: { type: String }, 
 });
 
 

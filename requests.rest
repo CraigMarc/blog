@@ -1,23 +1,62 @@
 GET http://localhost:3000/users/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzNjM0NDc3LCJleHAiOjE3MDM2MzU2Nzd9.soqovfnJk6tRFHN-IwYTHD_t1hZA4u1s1njAXnnEP1k
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODE5OTc4LCJleHAiOjE3MDM4MjExNzh9.a5kfmP7vKribuT4ItfOA-KV1c6NXZ_rxa12NjxvSZHw
 ###new post
 
 POST http://localhost:3000/users/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzNTUwNDUxLCJleHAiOjE3MDM1NTE2NTF9.2Qy3mVfCFUqW_G2Ic8p927g3KnAKjAg8HEz8eHO1Sjw
-Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODA2OTIxLCJleHAiOjE3MDM4MDgxMjF9.CWjg0td1wVCfkGW53Ns9eK6Zr2nq0labHgXp0luNEt4
+enctype: multipart/form-data
 
 {"title":"post1234567",
-"text":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates natus voluptatibus reprehenderit ipsa commodi illo officia veniam velit. Voluptatibus maiores earum quaerat. Facilis, corporis placeat excepturi eaque repudiandae aliquam. Enim animi et expedita autem dolore quibusdam mollitia dignissimos consequuntur quasi aperiam, quis vel at iste ullam vero voluptas ut sunt blanditiis laborum velit nesciunt sapiente vitae. Dolor aperiam ducimus, fugit ipsam, molestias, provident cumque tenetur tempore atque ab nostrum commodi non labore velit odit facere quidem voluptatum. Vero, deserunt. Dolore explicabo ipsum neque earum assumenda labore commodi? Vero atque veritatis vitae temporibus, repellendus quam molestiae, rem qui sequi fuga maxime?"
+"text":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates natus voluptatibus reprehenderit ipsa commodi illo officia veniam velit. Voluptatibus maiores earum quaerat. Facilis, corporis placeat excepturi eaque repudiandae aliquam. Enim animi et expedita autem dolore quibusdam mollitia dignissimos consequuntur quasi aperiam, quis vel at iste ullam vero voluptas ut sunt blanditiis laborum velit nesciunt sapiente vitae. Dolor aperiam ducimus, fugit ipsam, molestias, provident cumque tenetur tempore atque ab nostrum commodi non labore velit odit facere quidem voluptatum. Vero, deserunt. Dolore explicabo ipsum neque earum assumenda labore commodi? Vero atque veritatis vitae temporibus, repellendus quam molestiae, rem qui sequi fuga maxime?",
+"image": "pizza.jpeg"
 }
+
+### multipart form request with webkit
+POST http://localhost:3000/users/posts HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODE5OTc4LCJleHAiOjE3MDM4MjExNzh9.a5kfmP7vKribuT4ItfOA-KV1c6NXZ_rxa12NjxvSZHw
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="title"
+
+title
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="text"
+
+text here
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="image"; filename="pizza.jpg"
+Content-Type: image/jpeg
+
+< ./pizza.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### multipart form request
+
+POST http://localhost:3000/users/posts HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODE2ODQ5LCJleHAiOjE3MDM4MTgwNDl9.cfJ5rG_auaLuH8S8Bc2f5DELsslZ6_CtjZK_jmIcfZ0
+Content-Type: multipart/form-data; boundary=MfnBoundry
+
+--MfnBoundry
+Content-Disposition: form-data; title="title"; text="text"; image="pizza.jpeg"
+Content-Type: text/plain
+
+
+--MfnBoundry--
+
+### multipart curl request
+curl -X POST -H Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODA4MzE0LCJleHAiOjE3MDM4MDk1MTR9.nYAkEdLDRev66MuFLtsnhOIKNhO-9k5rSEH9-nkgo8o http://localhost:3000/users/posts -H "Content-Type:multipart/form-data" http://localhost:3000/users/posts -F title=title -F text=text -F image=@piz.jpeg pizza4.jpeg
+
 
 ### edit post
 
 PUT http://localhost:3000/users/edit/65865a1cceedb9a64e830cf8
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzNjI5MTA3LCJleHAiOjE3MDM2MzAzMDd9.2c9jXHWD5vznYTkslkpejkhHOqcw_BFoyLyEhiWwts4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODA4MzE0LCJleHAiOjE3MDM4MDk1MTR9.nYAkEdLDRev66MuFLtsnhOIKNhO-9k5rSEH9-nkgo8o
 Content-Type: application/json
 
 {"title":"edit test",
-"text":"edit Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates natus voluptatibus reprehenderit ipsa commodi illo officia veniam velit. Voluptatibus maiores earum quaerat. Facilis, corporis placeat excepturi eaque repudiandae aliquam. Enim animi et expedita autem dolore quibusdam mollitia dignissimos consequuntur quasi aperiam, quis vel at iste ullam vero voluptas ut sunt blanditiis laborum velit nesciunt sapiente vitae. Dolor aperiam ducimus, fugit ipsam, molestias, provident cumque tenetur tempore atque ab nostrum commodi non labore velit odit facere quidem voluptatum. Vero, deserunt. Dolore explicabo ipsum neque earum assumenda labore commodi? Vero atque veritatis vitae temporibus, repellendus quam molestiae, rem qui sequi fuga maxime?"
+"text":"edit Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates natus voluptatibus reprehenderit ipsa commodi illo officia veniam velit. Voluptatibus maiores earum quaerat. Facilis, corporis placeat excepturi eaque repudiandae aliquam. Enim animi et expedita autem dolore quibusdam mollitia dignissimos consequuntur quasi aperiam, quis vel at iste ullam vero voluptas ut sunt blanditiis laborum velit nesciunt sapiente vitae. Dolor aperiam ducimus, fugit ipsam, molestias, provident cumque tenetur tempore atque ab nostrum commodi non labore velit odit facere quidem voluptatum. Vero, deserunt. Dolore explicabo ipsum neque earum assumenda labore commodi? Vero atque veritatis vitae temporibus, repellendus quam molestiae, rem qui sequi fuga maxime?",
+
 }
 
 ###new token
