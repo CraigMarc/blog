@@ -1,5 +1,5 @@
 GET http://localhost:3000/users/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODE5OTc4LCJleHAiOjE3MDM4MjExNzh9.a5kfmP7vKribuT4ItfOA-KV1c6NXZ_rxa12NjxvSZHw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODcxNTkyLCJleHAiOjE3MDM4NzI3OTJ9.5KXr3-tPbq1rV4293sn9kA9-35icXTSny1fRn1T9LGs
 ###new post
 
 POST http://localhost:3000/users/posts
@@ -13,7 +13,7 @@ Content-type: multipart/form-data
 
 ### multipart form request with webkit
 POST http://localhost:3000/users/posts HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODY5ODE0LCJleHAiOjE3MDM4NzEwMTR9.0Jl8MgRNTxBOERjYb5bLt1Z5nRpibFVUuQD8la4aQ6M
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODcxNTkyLCJleHAiOjE3MDM4NzI3OTJ9.5KXr3-tPbq1rV4293sn9kA9-35icXTSny1fRn1T9LGs
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -66,8 +66,8 @@ curl -X POST -H "Content-Type:application/json" http://localhost:3000/api/login 
 
 ###delete post
 
-Delete http://localhost:3000/users/posts/658a13cb6ef3fd5717446a25
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzNTQ4NDM3LCJleHAiOjE3MDM1NDk2Mzd9.SCj4gXFqHY6IdaZBdKIQIxErMRKuorLcRqpLESfHTYg
+Delete http://localhost:3000/users/posts/658f089d65ce2908555ab803
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODcxNTkyLCJleHAiOjE3MDM4NzI3OTJ9.5KXr3-tPbq1rV4293sn9kA9-35icXTSny1fRn1T9LGs
 
 ### publish post
 

@@ -114,8 +114,9 @@ exports.delete_post = asyncHandler(async (req, res, next) => {
   try {
     //find pic file
     let picPost = await Posts.findById(req.params.postId);
-    console.log(picPost.image)
+    
     //delete pic file
+    if (picPost.image){
     fs.unlink("./uploads/" + picPost.image, (err) => {
       if (err) {
           throw err;
@@ -123,6 +124,7 @@ exports.delete_post = asyncHandler(async (req, res, next) => {
   
       console.log("Delete File successful.");
   });
+}
     //delete post
     await Posts.findByIdAndDelete(req.params.postId);
     //delete comments
