@@ -279,4 +279,59 @@ catch (error) {
   res.status(500).json({ message: error });
 }
 
+
 })
+
+// add picture to post
+
+exports.image_post = [
+
+  // Handle single file upload with field name "image"
+  upload.single("image"),
+
+  //body("title").trim().escape(),
+  //body("text").trim().escape(),
+
+  async function (req, res, next) {
+    /*
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.json({
+        data: req.body,
+        errors: errors.array(),
+      });
+      return;
+    }*/
+
+    let picPost = await Posts.findById(req.params.postId);
+
+
+    const post = new Posts({
+      title: picPost.title,
+      text: picPost.text,
+      published: false,
+      _id: req.params.postId,
+      image: req.file.filename
+    });
+    /*
+      try {
+        await post.save()
+        let allPosts = await Posts.find().exec()
+        res.status(200).json(allPosts)
+      } catch (error) {
+        res.status(500).json({ message: error });
+      }*/
+      try {
+        await Posts.findByIdAndUpdate(req.params.postId, post, {});
+        let allPosts = await Posts.find().exec()
+        res.status(200).json(allPosts)
+      } catch (error) {
+        res.status(500).json({ message: error });
+      }
+      }
+    
+  
+
+   
+]
+
