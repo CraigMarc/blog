@@ -35,6 +35,10 @@ router.delete("/comments/:commentId", user_controller.comments_delete);
 /*
 router.post("/image/", user_controller.image_post);
 */
+//delete image
+
+router.delete("/image/:postId", user_controller.image_delete);
+
 
 
 module.exports = router;

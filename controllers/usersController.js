@@ -241,4 +241,42 @@ exports.comments_delete = asyncHandler(async (req, res, next) => {
 exports.image_post = upload.single("img"), (req, res, err) => { if (err) throw err; res.status(201).send(); }
 */
 
+// delete image
 
+exports.image_delete = asyncHandler(async (req, res, next) => {
+
+try{
+//find pic file
+let picPost = await Posts.findById(req.params.postId);
+    
+//delete pic file
+if (picPost.image){
+fs.unlink("./uploads/" + picPost.image, (err) => {
+  if (err) {
+      throw err;
+  }
+
+  console.log("Delete File successful.");
+});
+}
+
+// update database
+
+const post = new Posts({
+  title: picPost.title,
+  text: picPost.text,
+  published: picPost.published,
+  _id: req.params.postId,
+  
+});
+
+await Posts.findByIdAndUpdate(req.params.postId, {$unset: { image: ""}});
+    let allPosts = await Posts.find().exec()
+    res.status(200).json(allPosts)
+
+}
+catch (error) {
+  res.status(500).json({ message: error });
+}
+
+})

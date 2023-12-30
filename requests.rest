@@ -13,7 +13,7 @@ Content-type: multipart/form-data
 
 ### multipart form request with webkit
 POST http://localhost:3000/users/posts HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzODczMjU2LCJleHAiOjE3MDM4NzQ0NTZ9.Oxk1ayTaOU5PS-TYc-VZFzc0oQnrmV1icCCznstuET0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzOTYxMTQ5LCJleHAiOjE3MDM5NjIzNDl9.3g95f_rLJ9eFjl8WDRukrJ8AoNY33KHnmfEvuetyoDE
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -103,3 +103,8 @@ Post http://localhost:3000/api/logout
 ### get comments for posts
 
 GET http://localhost:3000/api/comments/658a1e1b4dc6d4b32fbe340d
+
+
+### delete picture
+Delete http://localhost:3000/users/image/659062560dea67e4267c4cec
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzOTYxMTQ5LCJleHAiOjE3MDM5NjIzNDl9.3g95f_rLJ9eFjl8WDRukrJ8AoNY33KHnmfEvuetyoDE
