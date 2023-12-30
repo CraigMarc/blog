@@ -1,5 +1,5 @@
 GET http://localhost:3000/users/posts 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzOTY1MDIwLCJleHAiOjE3MDM5NjYyMjB9.bxaZuNkkwZ5OclNNHqej5oIE1aPlD-EV8vAExceXL7Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzOTY1NTU1LCJleHAiOjE3MDM5NjY3NTV9.pmqjCSBkZv_woa-vE63FPJdXKIxswvpGJHvNgw96p2o
 ###new post
 
 POST http://localhost:3000/users/posts
@@ -106,12 +106,12 @@ GET http://localhost:3000/api/comments/658a1e1b4dc6d4b32fbe340d
 
 ### delete picture
 Delete http://localhost:3000/users/image/659062560dea67e4267c4cec
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzOTY1MDIwLCJleHAiOjE3MDM5NjYyMjB9.bxaZuNkkwZ5OclNNHqej5oIE1aPlD-EV8vAExceXL7Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzOTY1NTU1LCJleHAiOjE3MDM5NjY3NTV9.pmqjCSBkZv_woa-vE63FPJdXKIxswvpGJHvNgw96p2o
 
 ### add image to post
 
 POST http://localhost:3000/users/image/659062560dea67e4267c4cec HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzOTY1MDIwLCJleHAiOjE3MDM5NjYyMjB9.bxaZuNkkwZ5OclNNHqej5oIE1aPlD-EV8vAExceXL7Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzOTY1NTU1LCJleHAiOjE3MDM5NjY3NTV9.pmqjCSBkZv_woa-vE63FPJdXKIxswvpGJHvNgw96p2o
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW

@@ -194,9 +194,6 @@ exports.publish_post = asyncHandler(async (req, res, next) => {
 exports.edit_post = asyncHandler(async (req, res, next) => {
 
 
- // let postData = await Posts.findById({ _id: req.params.postId });
-
-
   const post = new Posts({
     title: req.body.title,
     text: req.body.text,
@@ -235,11 +232,7 @@ exports.comments_delete = asyncHandler(async (req, res, next) => {
 
 });
 
-/*
-// add image post
 
-exports.image_post = upload.single("img"), (req, res, err) => { if (err) throw err; res.status(201).send(); }
-*/
 
 // delete image
 
@@ -262,14 +255,6 @@ fs.unlink("./uploads/" + picPost.image, (err) => {
 
 // update database
 
-const post = new Posts({
-  title: picPost.title,
-  text: picPost.text,
-  published: picPost.published,
-  _id: req.params.postId,
-  
-});
-
 await Posts.findByIdAndUpdate(req.params.postId, {$unset: { image: ""}});
     let allPosts = await Posts.find().exec()
     res.status(200).json(allPosts)
@@ -289,19 +274,9 @@ exports.image_post = [
   // Handle single file upload with field name "image"
   upload.single("image"),
 
-  //body("title").trim().escape(),
-  //body("text").trim().escape(),
 
   async function (req, res, next) {
-    /*
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      res.json({
-        data: req.body,
-        errors: errors.array(),
-      });
-      return;
-    }*/
+    
 
     let picPost = await Posts.findById(req.params.postId);
 
@@ -313,14 +288,7 @@ exports.image_post = [
       _id: req.params.postId,
       image: req.file.filename
     });
-    /*
-      try {
-        await post.save()
-        let allPosts = await Posts.find().exec()
-        res.status(200).json(allPosts)
-      } catch (error) {
-        res.status(500).json({ message: error });
-      }*/
+   
       try {
         await Posts.findByIdAndUpdate(req.params.postId, post, {});
         let allPosts = await Posts.find().exec()
@@ -329,8 +297,6 @@ exports.image_post = [
         res.status(500).json({ message: error });
       }
       }
-    
-  
 
    
 ]
