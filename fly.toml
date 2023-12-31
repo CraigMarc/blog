@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for blogapi1200 on 2023-12-21T18:13:16-05:00
+# fly.toml app configuration file generated for blogapi1200 on 2023-12-30T18:28:57-05:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -10,7 +10,7 @@ primary_region = "ewr"
 
 [mounts]
   source="myapp_data"
-  destination="/uploads"
+  destination="/app/uploads"
 
 [http_service]
   internal_port = 3000
