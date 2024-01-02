@@ -16,7 +16,7 @@ let storage = multer.diskStorage({
   filename: function (req, file, cb) {
     let extArray = file.mimetype.split("/");
     let extension = extArray[extArray.length - 1];
-    cb(null, file.fieldname + '-' + Date.now()+ '.' +extension)
+    cb(null, file.fieldname + '-' + Date.now() + '.' + extension)
   }
 })
 const upload = multer({ storage: storage })
@@ -60,7 +60,7 @@ exports.create_post = [
   body("text").trim().escape(),
 
   async function (req, res, next) {
-    
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       res.json({
@@ -70,13 +70,13 @@ exports.create_post = [
       return;
     }
 
-if (req.file) {
-    const post = new Posts({
-      title: req.body.title,
-      text: req.body.text,
-      published: false,
-      image: req.file.filename
-    });
+    if (req.file) {
+      const post = new Posts({
+        title: req.body.title,
+        text: req.body.text,
+        published: false,
+        image: req.file.filename
+      });
       try {
         await post.save()
         let allPosts = await Posts.find().exec()
@@ -85,13 +85,13 @@ if (req.file) {
         res.status(500).json({ message: error });
       }
     }
-   else {
-    const post = new Posts({
-      title: req.body.title,
-      text: req.body.text,
-      published: false,
-      
-    });
+    else {
+      const post = new Posts({
+        title: req.body.title,
+        text: req.body.text,
+        published: false,
+
+      });
       try {
         await post.save()
         let allPosts = await Posts.find().exec()
@@ -99,11 +99,11 @@ if (req.file) {
       } catch (error) {
         res.status(500).json({ message: error });
       }
-   }
-    
+    }
+
 
   }
-   
+
 ]
 
 
@@ -114,17 +114,17 @@ exports.delete_post = asyncHandler(async (req, res, next) => {
   try {
     //find pic file
     let picPost = await Posts.findById(req.params.postId);
-    
+
     //delete pic file
-    if (picPost.image){
-    fs.unlink("./uploads/" + picPost.image, (err) => {
-      if (err) {
+    if (picPost.image) {
+      fs.unlink("./uploads/" + picPost.image, (err) => {
+        if (err) {
           throw err;
-      }
-  
-      console.log("Delete File successful.");
-  });
-}
+        }
+
+        console.log("Delete File successful.");
+      });
+    }
     //delete post
     await Posts.findByIdAndDelete(req.params.postId);
     //delete comments
@@ -238,31 +238,31 @@ exports.comments_delete = asyncHandler(async (req, res, next) => {
 
 exports.image_delete = asyncHandler(async (req, res, next) => {
 
-try{
-//find pic file
-let picPost = await Posts.findById(req.params.postId);
-    
-//delete pic file
-if (picPost.image){
-fs.unlink("./uploads/" + picPost.image, (err) => {
-  if (err) {
-      throw err;
-  }
+  try {
+    //find pic file
+    let picPost = await Posts.findById(req.params.postId);
 
-  console.log("Delete File successful.");
-});
-}
+    //delete pic file
+    if (picPost.image) {
+      fs.unlink("./uploads/" + picPost.image, (err) => {
+        if (err) {
+          throw err;
+        }
 
-// update database
+        console.log("Delete File successful.");
+      });
+    }
 
-await Posts.findByIdAndUpdate(req.params.postId, {$unset: { image: ""}});
+    // update database
+
+    await Posts.findByIdAndUpdate(req.params.postId, { $unset: { image: "" } });
     let allPosts = await Posts.find().exec()
     res.status(200).json(allPosts)
 
-}
-catch (error) {
-  res.status(500).json({ message: error });
-}
+  }
+  catch (error) {
+    res.status(500).json({ message: error });
+  }
 
 
 })
@@ -276,7 +276,7 @@ exports.image_post = [
 
 
   async function (req, res, next) {
-    
+
 
     let picPost = await Posts.findById(req.params.postId);
 
@@ -288,16 +288,16 @@ exports.image_post = [
       _id: req.params.postId,
       image: req.file.filename
     });
-   
-      try {
-        await Posts.findByIdAndUpdate(req.params.postId, post, {});
-        let allPosts = await Posts.find().exec()
-        res.status(200).json(allPosts)
-      } catch (error) {
-        res.status(500).json({ message: error });
-      }
-      }
 
-   
+    try {
+      await Posts.findByIdAndUpdate(req.params.postId, post, {});
+      let allPosts = await Posts.find().exec()
+      res.status(200).json(allPosts)
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  }
+
+
 ]
 

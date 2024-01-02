@@ -46,5 +46,6 @@ async function userCreate(userName, password) {
     
     console.log('added user');
   }
-
-  userCreate('craig', '123456')
+// node addUser.js 
+// for username and password see api.database.odt wp file
+  userCreate('username', 'password')
