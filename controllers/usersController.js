@@ -19,7 +19,22 @@ let storage = multer.diskStorage({
     cb(null, file.fieldname + '-' + Date.now() + '.' + extension)
   }
 })
-const upload = multer({ storage: storage })
+
+// only allow jpeg and png files
+
+const fileFilter=(req, file, cb)=>{
+  if(file.mimetype ==='image/jpeg' || file.mimetype ==='image/jpg' || file.mimetype ==='image/png'){
+      cb(null,true);
+  }else{
+      cb(null, false);
+  }
+
+ }
+
+ const upload = multer({ 
+  storage:storage,
+  fileFilter:fileFilter
+});
 
 
 
@@ -300,4 +315,3 @@ exports.image_post = [
 
 
 ]
-
