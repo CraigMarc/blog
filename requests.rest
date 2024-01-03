@@ -13,7 +13,7 @@ Content-type: multipart/form-data
 
 ### multipart form request with webkit
 POST http://localhost:3000/users/posts HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzOTkwMTk1LCJleHAiOjE3MDM5OTEzOTV9.F3OdccW7W8L3oWGwRfOV2NedogzqZPjKgAsK24BRHq0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNtYXIiLCJpYXQiOjE3MDQyOTk3MDEsImV4cCI6MTcwNDMwMDkwMX0.RDZ-ARw4Epl0PtopCybLk3vvvch-4xbdHaSU-vkwBDw
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -30,6 +30,27 @@ Content-Type: image/jpeg
 
 < ./pizza.jpeg
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### multipart wrong filetype
+POST http://localhost:3000/users/posts HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNtYXIiLCJpYXQiOjE3MDQyOTk3MDEsImV4cCI6MTcwNDMwMDkwMX0.RDZ-ARw4Epl0PtopCybLk3vvvch-4xbdHaSU-vkwBDw
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="title"
+
+title
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="text"
+
+text here
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="image"; filename="./bell-ring.svg"
+Content-Type: image/svg
+
+< ./bell-ring.svg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
 
 ### multipart reuqest without pic
 
@@ -61,7 +82,7 @@ Content-Type: application/json
 
 ###new token
 
-curl -X POST -H "Content-Type:application/json" http://localhost:3000/api/login -d '{"email":"craig", "password":"123456"}'
+curl -X POST -H "Content-Type:application/json" http://localhost:3000/api/login -d '{"email":"cmar", "password":"password here"}'
 
 ###delete post
 
