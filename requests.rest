@@ -1,5 +1,5 @@
 GET http://localhost:3000/users/posts 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNyYWlnIiwiaWF0IjoxNzAzOTY1NTU1LCJleHAiOjE3MDM5NjY3NTV9.pmqjCSBkZv_woa-vE63FPJdXKIxswvpGJHvNgw96p2o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNtYXIiLCJpYXQiOjE3MDQ0MTUwNTUsImV4cCI6MTcwNDQxNjI1NX0._FjkXfglaI0-_bB7CxOSF01zQQt-JTgH6yBWty9u9Nc
 ###new post
 
 POST http://localhost:3000/users/posts
@@ -80,9 +80,9 @@ Content-Type: application/json
 "text":"edit Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates natus voluptatibus reprehenderit ipsa commodi illo officia veniam velit. Voluptatibus maiores earum quaerat. Facilis, corporis placeat excepturi eaque repudiandae aliquam. Enim animi et expedita autem dolore quibusdam mollitia dignissimos consequuntur quasi aperiam, quis vel at iste ullam vero voluptas ut sunt blanditiis laborum velit nesciunt sapiente vitae. Dolor aperiam ducimus, fugit ipsam, molestias, provident cumque tenetur tempore atque ab nostrum commodi non labore velit odit facere quidem voluptatum. Vero, deserunt. Dolore explicabo ipsum neque earum assumenda labore commodi? Vero atque veritatis vitae temporibus, repellendus quam molestiae, rem qui sequi fuga maxime?"
 }
 
-###new token
+###new token add password
 
-curl -X POST -H "Content-Type:application/json" http://localhost:3000/api/login -d '{"email":"cmar", "password":"password here"}'
+curl -X POST -H "Content-Type:application/json" http://localhost:3000/api/login -d '{"email":"cmar", "password":"passwordhere"}'
 
 ###delete post
 

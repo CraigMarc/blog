@@ -8,6 +8,7 @@ dotenv.config();
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const apiRouter = require('./routes/api')
+const gameRouter = require('./routes/game')
 const passport = require("passport");
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
@@ -22,12 +23,19 @@ mongoose.set("strictQuery", false);
 
 const app = express();
 
+//production cors
+
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://blog-public-two.vercel.app", "https://blog-user-beta.vercel.app"],
+    origin: ["https://subtle-daifuku-4bb302.netlify.app", "https://blog-public-two.vercel.app", "https://blog-user-beta.vercel.app"],
     credentials: true,
   })
 );
+
+// dev cors
+/*
+app.use(cors());
+*/
 
 const RateLimit = require("express-rate-limit");
 const limiter = RateLimit({
@@ -98,6 +106,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname)));
 app.use('/', indexRouter);
 //app.use('/users', usersRouter);
+app.use('/game', gameRouter);
 app.use('/api', apiRouter)
 app.use('/users', passport.authenticate('jwt', {session: false}), usersRouter);
 // catch 404 and forward to error handler

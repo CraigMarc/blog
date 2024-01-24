@@ -1,0 +1,37 @@
+### check coordinates false 
+GET http://localhost:3000/game?pic_name=board1&char_name=waldo&x=1200&y=900
+
+### check coordin. true GET 
+http://localhost:3000/game?pic_name=board1&char_name=waldo&x=1530&y=700
+
+### board 2 coor false GET 
+http://localhost:3000/game?pic_name=board2&char_name=waldo&x=1200&y=900
+
+### board 2 coor true GET 
+http://localhost:3000/game?pic_name=board2&char_name=wizard&x=810&y=1010
+
+### board 3 false GET 
+http://localhost:3000/game?pic_name=board3&char_name=waldo&x=1200&y=900
+
+### board 3 true GET 
+http://localhost:3000/game?pic_name=board3&char_name=wenda&x=1210&y=310
+
+### start time
+
+GET http://localhost:3000/game/start?id=12345
+
+### end time
+
+GET http://localhost:3000/game/end?pic_name=board2&id=12345
+
+### new high score post 
+POST http://localhost:3000/game/score 
+Content-Type: application/json
+
+{"name": "jay", "id":"12345", "pic_name": "board2" }
+
+### get high score
+
+GET http://localhost:3000/game/highscore?pic_name=board2
+
+### delete current high scores GET http://localhost:3000/game/deletecurrent
